@@ -79,14 +79,14 @@ long long rena::lint::to_longlong() const {
                                             : builtin::safe_sub<long long>( out , it -> value() );
         }
     }
-    catch ( const exceptions::renaapa_overflow& e )
+    catch ( exceptions::renaapa_overflow )
     {
         throw exceptions::renaapa_overflow( 
             RENA_ERR_CONVERT_LARGE_NUMBER_TO_SMALLER_TYPE ,
             "cannot convert a large integer out of limitation of long long to it"
         );
     }
-    catch ( const std::exception& e )
+    catch ( ... )
     {
         throw;
     }
