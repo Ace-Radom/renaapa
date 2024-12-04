@@ -35,18 +35,18 @@ namespace rena {
             __RENALIBS_API__ digit& operator--();
             __RENALIBS_API__ digit operator--( int );
 
-            friend bool operator>( const digit& __c_di_lhs , const digit& __c_di_rhs );
-            friend bool operator<( const digit& __c_di_lhs , const digit& __c_di_rhs );
-            friend bool operator>=( const digit& __c_di_lhs , const digit& __c_di_rhs );
-            friend bool operator<=( const digit& __c_di_lhs , const digit& __c_di_rhs );
-            friend bool operator==( const digit& __c_di_lhs , const digit& __c_di_rhs );
-            friend bool operator!=( const digit& __c_di_lhs , const digit& __c_di_rhs );
+            friend inline bool operator>( const digit& __c_di_lhs , const digit& __c_di_rhs ){ return __c_di_lhs._digit > __c_di_rhs._digit; }
+            friend inline bool operator<( const digit& __c_di_lhs , const digit& __c_di_rhs ){ return __c_di_lhs._digit < __c_di_rhs._digit; }
+            friend inline bool operator>=( const digit& __c_di_lhs , const digit& __c_di_rhs ){ return __c_di_lhs._digit >= __c_di_rhs._digit; }
+            friend inline bool operator<=( const digit& __c_di_lhs , const digit& __c_di_rhs ){ return __c_di_lhs._digit <= __c_di_rhs._digit; }
+            friend inline bool operator==( const digit& __c_di_lhs , const digit& __c_di_rhs ){ return __c_di_lhs._digit == __c_di_rhs._digit; }
+            friend inline bool operator!=( const digit& __c_di_lhs , const digit& __c_di_rhs ){ return __c_di_lhs._digit != __c_di_rhs._digit; }
 
-            friend int operator+( const digit& __c_di_lhs , const digit& __c_di_rhs );
-            friend int operator-( const digit& __c_di_lhs , const digit& __c_di_rhs );
-            friend int operator*( const digit& __c_di_lhs , const digit& __c_di_rhs );
-            friend int operator/( const digit& __c_di_lhs , const digit& __c_di_rhs );
-            friend int operator%( const digit& __c_di_lhs , const digit& __c_di_rhs );
+            friend inline int operator+( const digit& __c_di_lhs , const digit& __c_di_rhs ){ return static_cast<int>( __c_di_lhs._digit + __c_di_rhs._digit ); }
+            friend inline int operator-( const digit& __c_di_lhs , const digit& __c_di_rhs ){ return static_cast<int>( __c_di_lhs._digit - __c_di_rhs._digit ); }
+            friend inline int operator*( const digit& __c_di_lhs , const digit& __c_di_rhs ){ return static_cast<int>( __c_di_lhs._digit * __c_di_rhs._digit ); }
+            friend inline int operator/( const digit& __c_di_lhs , const digit& __c_di_rhs ){ return static_cast<int>( __c_di_lhs._digit / __c_di_rhs._digit ); }
+            friend inline int operator%( const digit& __c_di_lhs , const digit& __c_di_rhs ){ return static_cast<int>( __c_di_lhs._digit % __c_di_rhs._digit ); }
             
             template <class _Elem , class _Traits>
             inline friend std::basic_ostream<_Elem,_Traits>& operator<<( std::basic_ostream<_Elem,_Traits>& __os , const digit& __c_di_v ){
@@ -58,19 +58,6 @@ namespace rena {
             uint8_t _digit;
 
     }; // class digit
-
-    inline bool operator>( const digit& __c_di_lhs , const digit& __c_di_rhs ){ return __c_di_lhs._digit > __c_di_rhs._digit; }
-    inline bool operator<( const digit& __c_di_lhs , const digit& __c_di_rhs ){ return __c_di_lhs._digit < __c_di_rhs._digit; }
-    inline bool operator>=( const digit& __c_di_lhs , const digit& __c_di_rhs ){ return __c_di_lhs._digit >= __c_di_rhs._digit; }
-    inline bool operator<=( const digit& __c_di_lhs , const digit& __c_di_rhs ){ return __c_di_lhs._digit <= __c_di_rhs._digit; }
-    inline bool operator==( const digit& __c_di_lhs , const digit& __c_di_rhs ){ return __c_di_lhs._digit == __c_di_rhs._digit; }
-    inline bool operator!=( const digit& __c_di_lhs , const digit& __c_di_rhs ){ return __c_di_lhs._digit != __c_di_rhs._digit; }
-
-    inline int operator+( const digit& __c_di_lhs , const digit& __c_di_rhs ){ return static_cast<int>( __c_di_lhs._digit + __c_di_rhs._digit ); }
-    inline int operator-( const digit& __c_di_lhs , const digit& __c_di_rhs ){ return static_cast<int>( __c_di_lhs._digit - __c_di_rhs._digit ); }
-    inline int operator*( const digit& __c_di_lhs , const digit& __c_di_rhs ){ return static_cast<int>( __c_di_lhs._digit * __c_di_rhs._digit ); }
-    inline int operator/( const digit& __c_di_lhs , const digit& __c_di_rhs ){ return static_cast<int>( __c_di_lhs._digit / __c_di_rhs._digit ); }
-    inline int operator%( const digit& __c_di_lhs , const digit& __c_di_rhs ){ return static_cast<int>( __c_di_lhs._digit % __c_di_rhs._digit ); }
 
     class lint {
 
