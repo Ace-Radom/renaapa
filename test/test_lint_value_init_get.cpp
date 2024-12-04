@@ -1,4 +1,5 @@
 #include<iostream>
+#include<limits>
 
 #include"rena/renaapa.h"
 
@@ -28,6 +29,20 @@ int main(){
     if ( ln4.to_string() != "1024" )
     {
         std::cout << "4" << std::endl;
+        return 1;
+    }
+
+    rena::lint ln5( std::numeric_limits<long long>().max() );
+    if ( ln5.to_longlong() != std::numeric_limits<long long>().max() )
+    {
+        std::cout << "5" << std::endl;
+        return 1;
+    }
+
+    rena::lint ln6( std::numeric_limits<long long>().min() );
+    if ( ln6.to_longlong() != std::numeric_limits<long long>().min() )
+    {
+        std::cout << "6" << std::endl;
         return 1;
     }
 

@@ -5,8 +5,11 @@
 #include<cassert>
 #include<cctype>
 #include<cmath>
+#include<limits>
 #include<regex>
 #include<sstream>
+
+#include"builtin/safe_arith.h"
 
 rena::lint::lint(){
     this -> _b_is_positiv = true;
@@ -16,6 +19,20 @@ rena::lint::lint(){
 }
 
 rena::lint::lint( long long __ll_v ){
+    if ( __ll_v == std::numeric_limits<long long>().min() )
+    {
+        this -> _b_is_positiv = false;
+        long long ll_max = std::numeric_limits<long long>().max();
+        this -> _v_digits.clear();
+        do {
+            this -> _v_digits.push_back( digit( ll_max % 10 ) );
+            ll_max /= 10;
+        } while ( ll_max > 0 );
+        this -> _v_digits[0]++;
+        return;
+    } // handle long long min
+    // long long min's abs value is out of range of long long max
+
     this -> _b_is_positiv = ( __ll_v >= 0 );
     __ll_v = std::abs( __ll_v );
     this -> _v_digits.clear();
@@ -49,6 +66,32 @@ std::string rena::lint::to_string( bool __b_positiv_with_sign ) const {
     } // get digits from back to front
 
     return oss.str();
+}
+
+long long rena::lint::to_longlong() const {
+    long long out = 0;
+
+    try {
+        for ( auto it = this -> _v_digits.rbegin() ; it != _v_digits.rend() ; ++it )
+        {
+            out = builtin::safe_mul<long long>( out , 10 );
+            out = ( this -> _b_is_positiv ) ? builtin::safe_add<long long>( out , it -> value() )
+                                            : builtin::safe_sub<long long>( out , it -> value() );
+        }
+    }
+    catch ( const exceptions::renaapa_overflow& e )
+    {
+        throw exceptions::renaapa_overflow( 
+            RENA_ERR_CONVERT_LARGE_NUMBER_TO_SMALLER_TYPE ,
+            "cannot convert a large integer out of limitation of long long to it"
+        );
+    }
+    catch ( const std::exception& e )
+    {
+        throw;
+    }
+
+    return out;
 }
 
 bool rena::lint::_is_legal_value_str( const std::string& __c_s_vstr ) const {

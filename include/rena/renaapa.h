@@ -15,8 +15,14 @@ namespace rena {
         public:
             digit( uint8_t __u8i_v = 0 );
 
+            uint8_t value() const noexcept;
+
             digit& operator=( uint8_t __u8i_v );
             digit& operator=( const digit& __c_di_v );
+            digit& operator++();
+            digit operator++( int );
+            digit& operator--();
+            digit operator--( int );
             friend bool operator>( const digit& __c_di_lhs , const digit& __c_di_rhs );
             friend bool operator<( const digit& __c_di_lhs , const digit& __c_di_rhs );
             friend bool operator>=( const digit& __c_di_lhs , const digit& __c_di_rhs );
@@ -63,6 +69,7 @@ namespace rena {
             ~lint(){}
 
             std::string to_string( bool __b_positiv_with_sign = false ) const;
+            long long to_longlong() const;
 
         private:
             std::vector<digit> _v_digits;
