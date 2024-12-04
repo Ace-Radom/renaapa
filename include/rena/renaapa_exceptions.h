@@ -46,16 +46,16 @@ namespace rena::exceptions {
 
     }; // class renaapa_illegal_value
 
-    class renaapa_out_of_range : public renaapa_basic_exception<renaapa_out_of_range> {
+    class renaapa_overflow : public renaapa_basic_exception<renaapa_overflow> {
 
         public:
-            renaapa_out_of_range( unsigned int __ui_errcode , std::string __s_errmsg )
-                : renaapa_basic_exception<renaapa_out_of_range>( __ui_errcode , __s_errmsg ) {}
-            virtual ~renaapa_out_of_range() noexcept {}
+            renaapa_overflow( unsigned int __ui_errcode , std::string __s_errmsg )
+                : renaapa_basic_exception<renaapa_overflow>( __ui_errcode , __s_errmsg ) {}
+            virtual ~renaapa_overflow() noexcept {}
 
-            static constexpr const char* ExceptionTypeName = "renaapa_out_of_range";
+            static constexpr const char* ExceptionTypeName = "renaapa_overflow";
 
-    }; // class renaapa_out_of_range
+    }; // class renaapa_overflow
 
 } // namespace rena::exceptions
 
