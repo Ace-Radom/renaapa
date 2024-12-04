@@ -1,4 +1,4 @@
-name: CMake Release Build Mac (Clang)
+name: CMake Release Build MacOS (Clang)
 
 on:
   push:
