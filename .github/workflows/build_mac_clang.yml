@@ -1,4 +1,4 @@
-name: CMake Release Build Windows (MSVC)
+name: CMake Release Build Mac (Clang)
 
 on:
   push:
@@ -11,7 +11,7 @@ env:
 
 jobs:
   build:
-    runs-on: windows-latest
+    runs-on: macos-latest
 
     steps:
       - uses: actions/checkout@v4
