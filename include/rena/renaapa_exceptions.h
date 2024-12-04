@@ -13,7 +13,7 @@ namespace rena::exceptions {
         public:
             renaapa_basic_exception( unsigned int __ui_errcode , std::string __s_errmsg ) : _ui_errcode( __ui_errcode ) {
                 std::ostringstream oss;
-                oss << "[" << this -> ExceptionTypeName << ":" << this -> _ui_errcode << "] " << __s_errmsg;
+                oss << "[" << T::get_exception_type_name() << ":" << this -> _ui_errcode << "] " << __s_errmsg;
                 this -> _s_errmsg = oss.str();
                 return;
             }
@@ -26,8 +26,6 @@ namespace rena::exceptions {
             unsigned int code() const noexcept {
                 return this -> _ui_errcode;
             }
-
-            static constexpr const char* ExceptionTypeName = T::ExceptionTypeName;
 
         private:
             unsigned int _ui_errcode;
@@ -42,7 +40,7 @@ namespace rena::exceptions {
                 : renaapa_basic_exception<renaapa_illegal_value>( __ui_errcode , __s_errmsg ) {}
             virtual ~renaapa_illegal_value() noexcept {}
 
-            static constexpr const char* ExceptionTypeName = "renaapa_illegal_value";
+            static constexpr const char* get_exception_type_name() noexcept { return "renaapa_illegal_value"; }
 
     }; // class renaapa_illegal_value
 
@@ -53,7 +51,7 @@ namespace rena::exceptions {
                 : renaapa_basic_exception<renaapa_overflow>( __ui_errcode , __s_errmsg ) {}
             virtual ~renaapa_overflow() noexcept {}
 
-            static constexpr const char* ExceptionTypeName = "renaapa_overflow";
+            static constexpr const char* get_exception_type_name() noexcept { return "renaapa_overflow"; }
 
     }; // class renaapa_overflow
 
