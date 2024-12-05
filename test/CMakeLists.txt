@@ -1,3 +1,4 @@
 add_test_executable(test_digit)
 add_test_executable(test_lint_value_init_get)
 add_test_executable(test_lint_value_compare)
+add_test_executable(test_lint_add_sub)
