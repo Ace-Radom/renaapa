@@ -76,12 +76,12 @@ namespace rena {
 
             __RENALIBS_API__ lint abs() const;
 
-            friend bool operator>( const lint& __c_li_lhs , const lint& __c_li_rhs );
-            friend bool operator<( const lint& __c_li_lhs , const lint& __c_li_rhs );
-            friend bool operator>=( const lint& __c_li_lhs , const lint& __c_li_rhs );
-            friend bool operator<=( const lint& __c_li_lhs , const lint& __c_li_rhs );
-            friend bool operator==( const lint& __c_li_lhs , const lint& __c_li_rhs );
-            friend bool operator!=( const lint& __c_li_lhs , const lint& __c_li_rhs );
+            friend __RENALIBS_API__ bool operator>( const lint& __c_li_lhs , const lint& __c_li_rhs );
+            friend __RENALIBS_API__ bool operator<( const lint& __c_li_lhs , const lint& __c_li_rhs );
+            friend __RENALIBS_API__ bool operator>=( const lint& __c_li_lhs , const lint& __c_li_rhs );
+            friend __RENALIBS_API__ bool operator<=( const lint& __c_li_lhs , const lint& __c_li_rhs );
+            friend __RENALIBS_API__ bool operator==( const lint& __c_li_lhs , const lint& __c_li_rhs );
+            friend __RENALIBS_API__ bool operator!=( const lint& __c_li_lhs , const lint& __c_li_rhs );
 
         private:
             std::vector<digit> _v_digits;
@@ -92,12 +92,16 @@ namespace rena {
 
     }; // class lint
 
-    __RENALIBS_API__ bool operator>( const lint& __c_li_lhs , const lint& __c_li_rhs );
-    __RENALIBS_API__ bool operator<( const lint& __c_li_lhs , const lint& __c_li_rhs );
-    __RENALIBS_API__ bool operator>=( const lint& __c_li_lhs , const lint& __c_li_rhs );
-    __RENALIBS_API__ bool operator<=( const lint& __c_li_lhs , const lint& __c_li_rhs );
-    __RENALIBS_API__ bool operator==( const lint& __c_li_lhs , const lint& __c_li_rhs );
-    __RENALIBS_API__ bool operator!=( const lint& __c_li_lhs , const lint& __c_li_rhs );
+#ifndef _MSC_VER // avoiding C4273
+
+    bool operator>( const lint& __c_li_lhs , const lint& __c_li_rhs );
+    bool operator<( const lint& __c_li_lhs , const lint& __c_li_rhs );
+    bool operator>=( const lint& __c_li_lhs , const lint& __c_li_rhs );
+    bool operator<=( const lint& __c_li_lhs , const lint& __c_li_rhs );
+    bool operator==( const lint& __c_li_lhs , const lint& __c_li_rhs );
+    bool operator!=( const lint& __c_li_lhs , const lint& __c_li_rhs );
+
+#endif // _MSC_VER
 
 } // namespace rena
 
