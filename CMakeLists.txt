@@ -9,11 +9,12 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(LIBRARY_OUTPUT_PATH "${CMAKE_BINARY_DIR}/${CMAKE_BUILD_TYPE}")
 set(EXECUTABLE_OUTPUT_PATH "${CMAKE_BINARY_DIR}/${CMAKE_BUILD_TYPE}")
 
-set(RENAAPA_INCLUDE_DIR ${CMAKE_SOURCE_DIR}/include)
+set(RENAAPA_INCLUDE_DIR ${PROJECT_SOURCE_DIR}/include)
 
-add_subdirectory(${CMAKE_SOURCE_DIR}/src)
+add_subdirectory(${PROJECT_SOURCE_DIR}/src)
 
 if(${RENAAPA_BUILD_TEST})
+    include(${PROJECT_SOURCE_DIR}/cmake/add_test_executable.cmake)
     enable_testing()
-    add_subdirectory(${CMAKE_SOURCE_DIR}/test)
+    add_subdirectory(${PROJECT_SOURCE_DIR}/test)
 endif()

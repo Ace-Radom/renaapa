@@ -5,7 +5,7 @@
 
 int main(){
     rena::lint ln1;
-    if ( ln1.to_string() != "0" )
+    if ( !ln1.is_zero() )
     {
         std::cout << "1" << std::endl;
         return 1;
@@ -43,6 +43,13 @@ int main(){
     if ( ln6.to_longlong() != std::numeric_limits<long long>().min() )
     {
         std::cout << "6" << std::endl;
+        return 1;
+    }
+
+    rena::lint ln7( LN( -0 ) );
+    if ( ln7.to_string() != "0" )
+    {
+        std::cout << "7" << std::endl;
         return 1;
     }
 
