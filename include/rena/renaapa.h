@@ -83,12 +83,24 @@ namespace rena {
             friend __RENALIBS_API__ bool operator==( const lint& __c_li_lhs , const lint& __c_li_rhs );
             friend __RENALIBS_API__ bool operator!=( const lint& __c_li_lhs , const lint& __c_li_rhs );
 
+            friend __RENALIBS_API__ lint lint_add( const lint& __c_li_lhs , const lint& __c_li_rhs );
+            friend __RENALIBS_API__ lint lint_sub( const lint& __c_li_lhs , const lint& __c_li_rhs );
+
+            __RENALIBS_API__ lint& operator++();
+            __RENALIBS_API__ lint operator++( int );
+            __RENALIBS_API__ lint& operator--();
+            __RENALIBS_API__ lint operator--( int );
+
+            friend __RENALIBS_API__ lint operator+( const lint& __c_li_lhs , const lint& __c_li_rhs );
+            friend __RENALIBS_API__ lint operator-( const lint& __c_li_lhs , const lint& __c_li_rhs );
+
         private:
             std::vector<digit> _v_digits;
             bool _b_is_positiv;
 
             virtual bool _is_legal_value_str( const std::string& __c_s_vstr ) const;
             virtual void _parse_set_value_str( std::string __s_vstr );
+            void _trim_pre_zero();
 
     }; // class lint
 
@@ -100,6 +112,12 @@ namespace rena {
     bool operator<=( const lint& __c_li_lhs , const lint& __c_li_rhs );
     bool operator==( const lint& __c_li_lhs , const lint& __c_li_rhs );
     bool operator!=( const lint& __c_li_lhs , const lint& __c_li_rhs );
+
+    lint lint_add( const lint& __c_li_lhs , const lint& __c_li_rhs );
+    lint lint_sub( const lint& __c_li_lhs , const lint& __c_li_rhs );
+
+    lint operator+( const lint& __c_li_lhs , const lint& __c_li_rhs );
+    lint operator-( const lint& __c_li_lhs , const lint& __c_li_rhs );
 
 #endif // _MSC_VER
 

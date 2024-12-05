@@ -137,7 +137,7 @@ void rena::lint::_parse_set_value_str( std::string __s_vstr ){
     for ( auto it = __s_vstr.begin() ; it != __s_vstr.end() && *it == '0' ; )
     {
         it = __s_vstr.erase( it );
-    } // erase begining zero
+    } // erase pre zero
 
     this -> _v_digits.clear();
     if ( __s_vstr.size() == 0 )
@@ -153,5 +153,17 @@ void rena::lint::_parse_set_value_str( std::string __s_vstr ){
         }
     }
 
+    return;
+}
+
+void rena::lint::_trim_pre_zero(){
+    for ( auto it = this -> _v_digits.rbegin() ; it != this -> _v_digits.rend() && it -> value() == 0 ; )
+    {
+        it = decltype( it ) ( this -> _v_digits.erase( ( it + 1 ).base() ) );
+    }
+    if ( this -> _v_digits.empty() )
+    {
+        this -> _v_digits.push_back( digit( 0 ) );
+    }
     return;
 }

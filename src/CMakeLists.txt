@@ -1,5 +1,6 @@
 add_library(renaapa SHARED
     ${CMAKE_CURRENT_SOURCE_DIR}/digit.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/lint_arith.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/lint_comp.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/lint.cpp
 )
