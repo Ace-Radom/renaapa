@@ -1,4 +1,4 @@
-name: CMake Release Build Linux (GCC)
+name: CMake Release Build / Benchmark Linux (GCC)
 
 on:
   push:
