@@ -94,6 +94,28 @@ long long rena::lint::to_longlong() const {
     return out;
 }
 
+std::size_t rena::lint::size() const noexcept {
+    return this -> _v_digits.size();
+}
+
+bool rena::lint::is_pos() const noexcept {
+    return this -> _b_is_positiv;
+}
+
+bool rena::lint::is_zero() const noexcept {
+    if ( this -> size() == 1 && this -> _v_digits[0] == 0 )
+    {
+        return true;
+    }
+    return false;
+}
+
+rena::lint rena::lint::abs() const {
+    lint ret = *this;
+    ret._b_is_positiv = true;
+    return ret;
+}
+
 bool rena::lint::_is_legal_value_str( const std::string& __c_s_vstr ) const {
     std::regex re( R"(^[+-]?\d+$)" );
     return std::regex_match( __c_s_vstr , re );
@@ -121,6 +143,7 @@ void rena::lint::_parse_set_value_str( std::string __s_vstr ){
     if ( __s_vstr.size() == 0 )
     {
         this -> _v_digits.push_back( digit( 0 ) );
+        this -> _b_is_positiv = true;
     } // all digits are zero
     else
     {

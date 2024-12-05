@@ -70,6 +70,19 @@ namespace rena {
             __RENALIBS_API__ std::string to_string( bool __b_positiv_with_sign = false ) const;
             __RENALIBS_API__ long long to_longlong() const;
 
+            __RENALIBS_API__ std::size_t size() const noexcept;
+            __RENALIBS_API__ bool is_pos() const noexcept;
+            __RENALIBS_API__ bool is_zero() const noexcept;
+
+            __RENALIBS_API__ lint abs() const;
+
+            friend bool operator>( const lint& __c_li_lhs , const lint& __c_li_rhs );
+            friend bool operator<( const lint& __c_li_lhs , const lint& __c_li_rhs );
+            friend bool operator>=( const lint& __c_li_lhs , const lint& __c_li_rhs );
+            friend bool operator<=( const lint& __c_li_lhs , const lint& __c_li_rhs );
+            friend bool operator==( const lint& __c_li_lhs , const lint& __c_li_rhs );
+            friend bool operator!=( const lint& __c_li_lhs , const lint& __c_li_rhs );
+
         private:
             std::vector<digit> _v_digits;
             bool _b_is_positiv;
@@ -78,6 +91,13 @@ namespace rena {
             virtual void _parse_set_value_str( std::string __s_vstr );
 
     }; // class lint
+
+    __RENALIBS_API__ bool operator>( const lint& __c_li_lhs , const lint& __c_li_rhs );
+    __RENALIBS_API__ bool operator<( const lint& __c_li_lhs , const lint& __c_li_rhs );
+    __RENALIBS_API__ bool operator>=( const lint& __c_li_lhs , const lint& __c_li_rhs );
+    __RENALIBS_API__ bool operator<=( const lint& __c_li_lhs , const lint& __c_li_rhs );
+    __RENALIBS_API__ bool operator==( const lint& __c_li_lhs , const lint& __c_li_rhs );
+    __RENALIBS_API__ bool operator!=( const lint& __c_li_lhs , const lint& __c_li_rhs );
 
 } // namespace rena
 
