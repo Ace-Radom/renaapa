@@ -85,6 +85,7 @@ namespace rena {
 
             friend __RENALIBS_API__ lint lint_add( const lint& __c_li_lhs , const lint& __c_li_rhs );
             friend __RENALIBS_API__ lint lint_sub( const lint& __c_li_lhs , const lint& __c_li_rhs );
+            friend __RENALIBS_API__ lint lint_mul( const lint& __c_li_lhs , const lint& __c_li_rhs );
 
             __RENALIBS_API__ lint& operator++();
             __RENALIBS_API__ lint operator++( int );
@@ -93,6 +94,7 @@ namespace rena {
 
             friend __RENALIBS_API__ lint operator+( const lint& __c_li_lhs , const lint& __c_li_rhs );
             friend __RENALIBS_API__ lint operator-( const lint& __c_li_lhs , const lint& __c_li_rhs );
+            friend __RENALIBS_API__ lint operator*( const lint& __c_li_lhs , const lint& __c_li_rhs );
 
         private:
             std::vector<digit> _v_digits;
@@ -115,9 +117,11 @@ namespace rena {
 
     lint lint_add( const lint& __c_li_lhs , const lint& __c_li_rhs );
     lint lint_sub( const lint& __c_li_lhs , const lint& __c_li_rhs );
+    lint lint_mul( const lint& __c_li_lhs , const lint& __c_li_rhs );
 
     lint operator+( const lint& __c_li_lhs , const lint& __c_li_rhs );
     lint operator-( const lint& __c_li_lhs , const lint& __c_li_rhs );
+    lint operator*( const lint& __c_li_lhs , const lint& __c_li_rhs );
 
 #endif // _MSC_VER
 
